@@ -4,7 +4,7 @@ import { Planet } from './planet';
 
 function App() {
   const users = [
-                {planet: "srikanth", isGasPlanet: 31},
+                {name: "srikanth", age: 31},
                 {name: "varshika", age: 31},
                 {name: "baby", age: 1},
   ];
