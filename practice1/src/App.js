@@ -1,30 +1,56 @@
 import './App.css';
-import { User } from './user';
-import { Planet } from './planet';
-
+import {useState} from "react";
+// useState is one of the hook
 function App() {
-  const users = [
-                {name: "srikanth", age: 31},
-                {name: "varshika", age: 31},
-                {name: "baby", age: 1},
-  ];
-  const planets = [
-    {planet: "uranus", isGasPlanet: true},
-    {planet: "pluto", isGasPlanet: false},
-    {planet: "neptune", isGasPlanet: true},
-    {planet: "saturn", isGasPlanet: false},
-    {planet: "jupiter", isGasPlanet: true},
-    {planet: "venus", isGasPlanet: true},
-];
+  // age is the variable which is later changed using function 'setAge' having a default value '0' passed in state
+  const [age, setAge] = useState(0);
+  const [inputValue, setInputValue] = useState("");
+  const [showText, setShowHideText] = useState(true);
+  
+let showHide = () => {
+  setShowHideText(showText ? false : true)
+  console.log(showText ? false : true);
+}
+
+  let handleInput = (event) => {
+    setInputValue(event.target.value)
+    // console.log(event.target.value);
+  }
+
+  let increaseAge = () => {
+    setAge(age + 1)
+  }
+
+  const [changeValue, setButtonValue] = useState(0);
+  const clickIncrease = () => {
+    setButtonValue(changeValue + 1)
+  }
+
+  const clickDecrease = () => {
+    setButtonValue(changeValue - 1)
+  }
+
+  const clickZero = () => {
+    setButtonValue(0)
+  }
 
   return (
     <div className="App">  
-    {users.map((user, key) => {
-    return <User key={key} name={user.name} age={user.age} />
-    }) } 
-    {planets.map((planet, key) => {
-      return <Planet key={key} name={planet.planet} isGas={planet.isGasPlanet} />
-    })}
+    {/* <div>
+      {age} <button onClick={increaseAge}>Increase age</button>
+    </div>
+    <div>
+      <input type="text" onChange={handleInput}/>
+      {inputValue}
+    </div>
+    <div>
+      <button onClick={showHide}>Show/Hide</button>
+      {showText && <h1>This is a H1 text with Show/Hide</h1>}
+    </div> */}
+    <button onClick={clickIncrease}>Increase</button>
+    <button onClick={clickDecrease}>Decrease</button>
+    <button onClick={clickZero}>Set to Zero</button>
+    {changeValue}
     </div>
   );
 }
